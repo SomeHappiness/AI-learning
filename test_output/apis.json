@@ -1,0 +1,97 @@
+[
+  {
+    "type": "FORM",
+    "method": "GET",
+    "url": "https://www.baidu.com/s",
+    "parameters": [
+      {
+        "name": "ie",
+        "type": "hidden",
+        "required": false
+      },
+      {
+        "name": "f",
+        "type": "hidden",
+        "required": false
+      },
+      {
+        "name": "rsv_bp",
+        "type": "hidden",
+        "required": false
+      },
+      {
+        "name": "rsv_idx",
+        "type": "hidden",
+        "required": false
+      },
+      {
+        "name": "ch",
+        "type": "hidden",
+        "required": false
+      },
+      {
+        "name": "tn",
+        "type": "hidden",
+        "required": false
+      },
+      {
+        "name": "bar",
+        "type": "hidden",
+        "required": false
+      },
+      {
+        "name": "wd",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "rn",
+        "type": "hidden",
+        "required": false
+      },
+      {
+        "name": "fenlei",
+        "type": "hidden",
+        "required": false
+      },
+      {
+        "name": "oq",
+        "type": "hidden",
+        "required": false
+      },
+      {
+        "name": "rsv_pq",
+        "type": "hidden",
+        "required": false
+      },
+      {
+        "name": "rsv_t",
+        "type": "hidden",
+        "required": false
+      },
+      {
+        "name": "rqlang",
+        "type": "hidden",
+        "required": false
+      }
+    ]
+  },
+  {
+    "type": "AJAX",
+    "method": "GET",
+    "url": "http://suggestion.baidu.com/su",
+    "source": "inline-script"
+  },
+  {
+    "type": "AJAX",
+    "method": "/HOME/DATA/SETUPS?BSTOKEN=",
+    "url": "https://www.baidu.com/home/data/setups?bsToken=",
+    "source": "inline-script"
+  },
+  {
+    "type": "AJAX",
+    "method": "/UPS/SUBMIT/ADDTIPS?PRODUCT=PS&FROM=PCFE&TIPS=",
+    "url": "https://www.baidu.com/ups/submit/addtips?product=ps&from=pcfe&tips=",
+    "source": "inline-script"
+  }
+]
