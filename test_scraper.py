@@ -7,7 +7,56 @@
 
 import os
 import sys
+import json
 from web_scraper import WebScraper
+
+def generate_api_doc(apis, output_file):
+    """
+    生成API文档
+    
+    Args:
+        apis (list): API列表
+        output_file (str): 输出文件路径
+    """
+    with open(output_file, 'w', encoding='utf-8') as f:
+        f.write("# 网页接口文档\n\n")
+        f.write("本文档由自动化工具生成，列出了页面中检测到的所有API接口。\n\n")
+        
+        # 按类型分组
+        form_apis = [api for api in apis if api.get('type') == 'FORM']
+        ajax_apis = [api for api in apis if api.get('type') == 'AJAX']
+        
+        # 表单接口
+        if form_apis:
+            f.write("## 表单接口\n\n")
+            for i, api in enumerate(form_apis):
+                f.write(f"### {i+1}. {api['method']} {api['url']}\n\n")
+                f.write("**参数列表：**\n\n")
+                if api.get('parameters'):
+                    f.write("| 参数名 | 类型 | 是否必填 |\n")
+                    f.write("|--------|------|----------|\n")
+                    for param in api['parameters']:
+                        required = "是" if param.get('required') else "否"
+                        f.write(f"| {param['name']} | {param.get('type', '文本')} | {required} |\n")
+                else:
+                    f.write("无参数\n")
+                f.write("\n")
+        
+        # AJAX接口
+        if ajax_apis:
+            f.write("## AJAX接口\n\n")
+            for i, api in enumerate(ajax_apis):
+                f.write(f"### {i+1}. {api['method']} {api['url']}\n\n")
+                f.write(f"**来源：** {api.get('source', '未知')}\n\n")
+                f.write("\n")
+        
+        # 如果没有发现任何API
+        if not form_apis and not ajax_apis:
+            f.write("**未检测到任何API接口**\n\n")
+            f.write("可能的原因：\n")
+            f.write("1. 页面使用了动态加载技术，需要启用Selenium模式\n")
+            f.write("2. 页面上没有表单或者AJAX调用\n")
+            f.write("3. 页面使用了自定义的API调用方式，无法被自动检测\n")
 
 def main():
     """
@@ -56,6 +105,19 @@ def main():
         for i, img_url in enumerate(result['images']):
             if i < 3:  # 只显示前3个图片
                 print(f"图片 {i+1}: {img_url}")
+        
+        # 保存原始API数据为JSON
+        api_json_path = os.path.join(output_dir, "apis.json")
+        with open(api_json_path, "w", encoding="utf-8") as f:
+            json.dump(result['apis'], f, ensure_ascii=False, indent=2)
+            
+        # 生成API文档
+        api_doc_path = os.path.join(output_dir, "api_document.md")
+        generate_api_doc(result['apis'], api_doc_path)
+        
+        print(f"找到 {len(result['apis'])} 个API接口")
+        print(f"已保存API文档到: {api_doc_path}")
+        print(f"已保存API原始数据到: {api_json_path}")
                 
         print("测试完成!")
         
