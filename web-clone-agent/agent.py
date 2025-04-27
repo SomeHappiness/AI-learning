@@ -45,7 +45,7 @@ class CloneAgent:
     并处理它们之间的数据传递。
     """
     
-    def __init__(self, web_scraper, html_analyzer, style_extractor, vue_generator):
+    def __init__(self, web_scraper, html_analyzer, style_extractor, document_generator):
         """
         初始化克隆代理
         
@@ -53,18 +53,22 @@ class CloneAgent:
             web_scraper (WebScraper): 网页抓取器实例
             html_analyzer (HtmlAnalyzer): HTML分析器实例
             style_extractor (StyleExtractor): 样式提取器实例
-            vue_generator (VueGenerator): Vue项目生成器实例
+            document_generator (WebsiteDocumentGenerator): 网页文档生成器实例
         """
         # 保存各个组件
         self.web_scraper = web_scraper
         self.html_analyzer = html_analyzer
         self.style_extractor = style_extractor
-        self.vue_generator = vue_generator
+        self.document_generator = document_generator
         
         # 检查并初始化OpenAI功能（如果有API密钥）
         api_key = os.getenv('OPENAI_API_KEY')
+        api_url = os.getenv('OPENAI_API_URL')
         if api_key:
-            self.llm = OpenAI(temperature=0.3)
+            if api_url:
+                self.llm = OpenAI(temperature=0.3, openai_api_base=api_url)
+            else:
+                self.llm = OpenAI(temperature=0.3)
             self.use_llm = True
             logger.info("已成功配置OpenAI API，将使用AI辅助分析功能")
         else:
@@ -115,26 +119,26 @@ class CloneAgent:
             else:
                 print(f"{Fore.YELLOW}跳过步骤4/5: 未配置OpenAI API密钥，无法使用AI增强分析{Fore.RESET}")
             
-            # === 步骤5: 生成Vue项目 ===
-            print(f"{Fore.CYAN}步骤5/5: 生成Vue项目{Fore.RESET}")
-            success = self.vue_generator.generate_project(
+            # === 步骤5: 生成网页文档 ===
+            print(f"{Fore.CYAN}步骤5/5: 生成网页设计文档{Fore.RESET}")
+            success = self.document_generator.generate_document(
                 html_analysis,
                 style_analysis,
-                html_analysis['meta']
+                url
             )
             
             # 显示最终结果
             if success:
-                print(f"\n{Fore.GREEN}✓ 完成! 已成功克隆网页并生成Vue项目。{Fore.RESET}")
+                print(f"\n{Fore.GREEN}✓ 完成! 已成功分析网页并生成设计文档。{Fore.RESET}")
                 return True
             else:
-                print(f"\n{Fore.RED}✗ 生成Vue项目失败。{Fore.RESET}")
+                print(f"\n{Fore.RED}✗ 生成网页文档失败。{Fore.RESET}")
                 return False
             
         except Exception as e:
             # 捕获并记录所有未处理的异常
-            logger.exception(f"克隆网页时出错: {str(e)}")
-            print(f"\n{Fore.RED}✗ 克隆过程中出现错误: {str(e)}{Fore.RESET}")
+            logger.exception(f"分析网页时出错: {str(e)}")
+            print(f"\n{Fore.RED}✗ 分析过程中出现错误: {str(e)}{Fore.RESET}")
             return False
         
         finally:

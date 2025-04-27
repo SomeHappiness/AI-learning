@@ -26,8 +26,8 @@ from dotenv import load_dotenv
 from web_scraper import WebScraper         # 网页抓取模块
 from html_analyzer import HtmlAnalyzer     # HTML分析模块
 from style_extractor import StyleExtractor # 样式提取模块
-from vue_generator import VueGenerator     # Vue项目生成模块
 from agent import CloneAgent               # 克隆代理核心模块
+from website_document_generator import WebsiteDocumentGenerator  # 网页文档生成器
 
 # 初始化colorama用于彩色终端输出
 init()
@@ -51,7 +51,7 @@ def setup_argparse():
     """
     # 创建参数解析器对象
     parser = argparse.ArgumentParser(
-        description='Web Clone Agent - 将网页克隆为Vue项目',
+        description='Web Clone Agent - 网页分析与设计文档生成',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter  # 显示默认值
     )
     
@@ -63,8 +63,8 @@ def setup_argparse():
     
     parser.add_argument('--output', 
                       type=str, 
-                      default='vue-project', 
-                      help='输出Vue项目的路径')
+                      default='website-document', 
+                      help='输出文档的路径')
     
     parser.add_argument('--use-selenium', 
                       action='store_true', 
@@ -88,7 +88,7 @@ def main():
     2. 解析命令行参数
     3. 初始化组件
     4. 创建克隆代理
-    5. 执行克隆过程
+    5. 执行网页分析与文档生成过程
     """
     # 1. 加载环境变量（用于OpenAI API等）
     load_dotenv()
@@ -103,7 +103,7 @@ def main():
     
     # 打印欢迎信息和参数
     print(f"{Fore.CYAN}========================================{Fore.RESET}")
-    print(f"{Fore.GREEN}Web Clone Agent - 网页克隆为Vue项目{Fore.RESET}")
+    print(f"{Fore.GREEN}Web Clone Agent - 网页分析与设计文档生成{Fore.RESET}")
     print(f"{Fore.CYAN}========================================{Fore.RESET}")
     print(f"目标URL: {Fore.YELLOW}{args.url}{Fore.RESET}")
     print(f"输出路径: {Fore.YELLOW}{args.output}{Fore.RESET}")
@@ -124,33 +124,32 @@ def main():
         # 3.3 样式提取模块 - 提取和处理CSS样式
         style_extractor = StyleExtractor()
         
-        # 3.4 Vue项目生成模块 - 生成Vue组件和项目
-        vue_generator = VueGenerator(output_dir=args.output)
+        # 3.4 网页文档生成模块 - 生成网页设计文档
+        document_generator = WebsiteDocumentGenerator(output_dir=args.output)
         
-        # 4. 创建并运行克隆代理 - 协调各模块完成克隆任务
+        # 4. 创建并运行克隆代理 - 协调各模块完成任务
         agent = CloneAgent(
             web_scraper=web_scraper,
             html_analyzer=html_analyzer,
             style_extractor=style_extractor,
-            vue_generator=vue_generator
+            document_generator=document_generator
         )
         
-        # 5. 执行克隆过程
+        # 5. 执行网页分析和文档生成过程
         success = agent.clone_website(args.url, args.output)
         
-        # 显示克隆结果
+        # 显示结果
         if success:
-            print(f"\n{Fore.GREEN}✓ 克隆成功!{Fore.RESET} Vue项目已生成在 {Fore.YELLOW}{os.path.abspath(args.output)}{Fore.RESET}")
-            print(f"\n运行以下命令启动项目:")
-            print(f"{Fore.CYAN}cd {args.output}{Fore.RESET}")
-            print(f"{Fore.CYAN}npm install{Fore.RESET}")
-            print(f"{Fore.CYAN}npm run serve{Fore.RESET}")
+            print(f"\n{Fore.GREEN}✓ 分析成功!{Fore.RESET} 网页设计文档已生成在 {Fore.YELLOW}{os.path.abspath(args.output)}{Fore.RESET}")
+            print(f"\n您可以查看以下文件:")
+            print(f"{Fore.CYAN}index.html - 文档入口{Fore.RESET}")
+            print(f"{Fore.CYAN}site_data.yaml - 结构化数据{Fore.RESET}")
         else:
-            print(f"\n{Fore.RED}✗ 克隆过程中出现错误。请查看日志获取详细信息。{Fore.RESET}")
+            print(f"\n{Fore.RED}✗ 分析过程中出现错误。请查看日志获取详细信息。{Fore.RESET}")
     
     except Exception as e:
         # 捕获并记录所有未处理的异常
-        logger.exception("克隆过程中出现未处理的异常:")
+        logger.exception("分析过程中出现未处理的异常:")
         print(f"\n{Fore.RED}错误: {str(e)}{Fore.RESET}")
         return 1
     

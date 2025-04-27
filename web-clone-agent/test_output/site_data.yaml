@@ -1,0 +1,53 @@
+url: https://www.google.com
+generated_at: '2025-04-27T14:45:41.960677'
+page_title: Google
+meta:
+  description: ''
+  keywords: ''
+  author: ''
+  viewport: ''
+  charset: !!python/object/new:bs4.element.CharsetMetaAttributeValue
+    args:
+    - UTF-8
+    state:
+      original_value: UTF-8
+  language: zh-TW
+  og_tags: {}
+  twitter_tags: {}
+components:
+- type: form
+  element: form
+  id: ''
+  classes: []
+- type: modal
+  element: dialog
+  id: spch-dlg
+  classes:
+  - spch-dlg
+- type: header
+  element: style
+  id: ''
+  classes: []
+- type: header
+  element: div
+  id: ''
+  classes:
+  - L3eUgb
+- type: header
+  element: div
+  id: ''
+  classes:
+  - Fgvgjc
+- type: footer
+  element: script
+  id: ''
+  classes: []
+layout:
+  type: single_column
+  containers: []
+  grid_system: false
+  flex_layout: false
+  responsive: false
+  column_count: 1
+colors: []
+fonts: []

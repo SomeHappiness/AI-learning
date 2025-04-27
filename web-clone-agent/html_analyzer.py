@@ -70,16 +70,16 @@ class HtmlAnalyzer:
         
         参数:
             html_content (str): 页面HTML内容
-            
+        
         返回:
             dict: 包含页面结构、组件和元数据的分析结果
         """
         try:
             logger.info("开始分析HTML内容")
-            
-            # 使用BeautifulSoup解析HTML
+        
+        # 使用BeautifulSoup解析HTML
             soup = BeautifulSoup(html_content, 'html.parser')
-            
+        
             # 初始化结果字典
             result = {
                 'title': self._extract_title(soup),
@@ -202,7 +202,7 @@ class HtmlAnalyzer:
             'has_schema_markup': bool(soup.find(attrs={"itemtype": True})),
             'nesting_level': self._get_max_nesting_level(soup.body) if soup.body else 0,
             'tag_counts': self._count_tags(soup)
-        }
+            }
         
         # 检查是否使用了语义化标签
         semantic_tags = ['header', 'footer', 'nav', 'main', 'article', 'section', 'aside']

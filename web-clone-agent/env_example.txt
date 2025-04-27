@@ -2,7 +2,10 @@
 # 复制此文件为 .env 并填入您的API密钥
 
 # OpenAI API密钥，用于增强分析
-OPENAI_API_KEY=your_openai_api_key_here
+OPENAI_API_KEY=sk-UGjkSYRPNGZ5KLQws0llmRBohNiUe4HVPVhIkqMIfsVcOPmf
+
+# OpenAI API URL，如使用其他兼容OpenAI接口的服务商，请修改此URL
+OPENAI_API_URL=https://cloud.tencent.com/document/product/1772/115969
 
 # 日志级别 (DEBUG, INFO, WARNING, ERROR, CRITICAL)
 LOG_LEVEL=INFO
@@ -11,4 +14,4 @@ LOG_LEVEL=INFO
 TEMP_DIR=temp
 
 # Selenium等待时间(秒)
-SELENIUM_WAIT_TIME=5 
+SELENIUM_WAIT_TIME=5

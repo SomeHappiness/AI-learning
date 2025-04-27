@@ -1,0 +1,152 @@
+
+            <!DOCTYPE html>
+            <html lang="zh-CN">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>3_components</title>
+                <style>
+                    body {
+                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                        line-height: 1.6;
+                        max-width: 900px;
+                        margin: 0 auto;
+                        padding: 20px;
+                        color: #333;
+                    }
+                    pre {
+                        background-color: #f5f5f5;
+                        padding: 15px;
+                        border-radius: 5px;
+                        overflow-x: auto;
+                    }
+                    code {
+                        font-family: Consolas, Monaco, 'Andale Mono', monospace;
+                    }
+                    table {
+                        border-collapse: collapse;
+                        width: 100%;
+                        margin: 20px 0;
+                    }
+                    table, th, td {
+                        border: 1px solid #ddd;
+                    }
+                    th, td {
+                        padding: 12px;
+                        text-align: left;
+                    }
+                    th {
+                        background-color: #f2f2f2;
+                    }
+                    a {
+                        color: #0366d6;
+                        text-decoration: none;
+                    }
+                    a:hover {
+                        text-decoration: underline;
+                    }
+                </style>
+            </head>
+            <body>
+                <h1>网页组件文档</h1>
+<p>共检测到 <strong>6</strong> 个组件。</p>
+<h2>Form 组件</h2>
+<h3>Form 1</h3>
+<ul>
+<li><strong>元素类型</strong>: <code>&lt;form&gt;</code></li>
+<li><strong>文本长度</strong>: 47 字符</li>
+<li><strong>识别方法</strong>: tag_name</li>
+</ul>
+<h4>组件HTML片段</h4>
+<pre><code class="language-html">&lt;form action=&quot;/search&quot; autocomplete=&quot;off&quot; method=&quot;GET&quot; role=&quot;search&quot;&gt; &lt;div jsdata=&quot;MuIEvd;_;CCoOTE&quot; jsmodel=&quot;b5W85 vNzKHd&quot;&gt; &lt;div class=&quot;A8SBwf&quot; data-alt=&quot;false&quot; data-biboe=&quot;false&quot; data-efaql=&quot;false&quot; data-hp=&quot;true&quot; jsaction=&quot;lX6RWd:w3Wsmc;aaFXSd:k0wtTd;ocDSvd:duwfG;XmGRxb:mVw6nb;R6Slyc:F3goue;DkpM0b:d3sQLd;IQOavd:dFyQEf;XzZZPe:jI3wzf;Aghsf:AVsnlb;iHd9U:Q7Cnrc;f5hEHe:G0jgYd;vmxUb:j3bJnb;XBqW7:ihYaWc;UkQk6c:VSb4De;nTzfpf:YPRawb;R2c5O:LuRugf;qiCkJd:ANdidc;Q3vWPd:FtWxqb;NOg9L:HLgh3;uGoIkd:epUokb;zLdL... (已截断)
+</code></pre>
+<h4>功能建议</h4>
+<ul>
+<li>实现表单验证</li>
+<li>添加提交反馈机制</li>
+</ul>
+<h2>Modal 组件</h2>
+<h3>Modal 1</h3>
+<ul>
+<li><strong>元素类型</strong>: <code>&lt;dialog&gt;</code></li>
+<li><strong>ID</strong>: <code>spch-dlg</code></li>
+<li><strong>类名</strong>: <code>spch-dlg</code></li>
+<li><strong>文本长度</strong>: 0 字符</li>
+<li><strong>识别方法</strong>: tag_name</li>
+</ul>
+<h4>组件HTML片段</h4>
+<pre><code class="language-html">&lt;dialog class=&quot;spch-dlg&quot; id=&quot;spch-dlg&quot;&gt;&lt;div class=&quot;spch&quot; id=&quot;spch&quot; style=&quot;display:none&quot;&gt;&lt;/div&gt;&lt;/dialog&gt;
+</code></pre>
+<h4>功能建议</h4>
+<ul>
+<li>推荐使用独立组件实现</li>
+</ul>
+<h2>Header 组件</h2>
+<h3>Header 1</h3>
+<ul>
+<li><strong>元素类型</strong>: <code>&lt;style&gt;</code></li>
+<li><strong>文本长度</strong>: 367 字符</li>
+<li><strong>识别方法</strong>: structure_position</li>
+</ul>
+<h4>组件HTML片段</h4>
+<pre><code class="language-html">&lt;style&gt;.L3eUgb{display:flex;flex-direction:column;height:100%}.o3j99{flex-shrink:0;box-sizing:border-box}.n1xJcf{height:60px}.LLD4me{min-height:150px;height:calc(100% - 560px);max-height:290px}.yr19Zb{min-height:92px}.ikrT4e{max-height:160px}.mwht9d{display:none}.ADHj4e{padding-top:0px;padding-bottom:85px}.oWyZre{width:100%;height:500px;border-width:0}.qarstb{flex-grow:1}&lt;/style&gt;
+</code></pre>
+<h4>功能建议</h4>
+<ul>
+<li>可包含公司标志、导航和搜索功能</li>
+<li>考虑添加固定顶部功能(sticky header)</li>
+</ul>
+<h3>Header 2</h3>
+<ul>
+<li><strong>元素类型</strong>: <code>&lt;div&gt;</code></li>
+<li><strong>类名</strong>: <code>L3eUgb</code></li>
+<li><strong>文本长度</strong>: 147 字符</li>
+<li><strong>识别方法</strong>: structure_position</li>
+</ul>
+<h4>组件HTML片段</h4>
+<pre><code class="language-html">&lt;div class=&quot;L3eUgb&quot; data-hveid=&quot;1&quot;&gt;&lt;div class=&quot;o3j99 n1xJcf Ne6nSd&quot; role=&quot;navigation&quot;&gt;&lt;style&gt;.Ne6nSd{display:flex;align-items:center;padding:6px}a.MV3Tnb{display:inline-block;padding:5px;margin:0 5px;color:var(--COEmY)}a.MV3Tnb:first-of-type{margin-left:15px}.LX3sZb{display:inline-block;flex-grow:1}&lt;/style&gt;&lt;a class=&quot;MV3Tnb&quot; href=&quot;https://about.google/?fg=1&amp;amp;utm_source=google-&amp;amp;utm_medium=referral&amp;amp;utm_campaign=hp-header&quot; ping=&quot;/url?sa=t&amp;amp;rct=j&amp;amp;source=webhp&amp;amp;url=https://about.g... (已截断)
+</code></pre>
+<h4>功能建议</h4>
+<ul>
+<li>可包含公司标志、导航和搜索功能</li>
+<li>考虑添加固定顶部功能(sticky header)</li>
+</ul>
+<h3>Header 3</h3>
+<ul>
+<li><strong>元素类型</strong>: <code>&lt;div&gt;</code></li>
+<li><strong>类名</strong>: <code>Fgvgjc</code></li>
+<li><strong>文本长度</strong>: 11 字符</li>
+<li><strong>识别方法</strong>: structure_position</li>
+</ul>
+<h4>组件HTML片段</h4>
+<pre><code class="language-html">&lt;div class=&quot;Fgvgjc&quot;&gt;&lt;style&gt;.Fgvgjc{height:0;overflow:hidden}&lt;/style&gt;&lt;div class=&quot;gTMtLb fp-nh&quot; id=&quot;lb&quot;&gt;&lt;style&gt;.gTMtLb{z-index:1001;position:absolute;top:-1000px}&lt;/style&gt;&lt;/div&gt;&lt;span style=&quot;display:none&quot;&gt;&lt;span data-atsd=&quot;10&quot; data-db=&quot;1&quot; data-mmcnt=&quot;100&quot; jsaction=&quot;rcuQ6b:npT2md&quot; jscontroller=&quot;DhPYme&quot; style=&quot;display:none&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;script nonce=&quot;o82KGYaBFB6Z49GEJw2gkg&quot;&gt;this.gbar_=this.gbar_||{};(function(_){var window=this;
+try{
+_.pd=function(a,b,c){if(!a.j)if(c instanceof Array)for(var d of c)_... (已截断)
+</code></pre>
+<h4>功能建议</h4>
+<ul>
+<li>可包含公司标志、导航和搜索功能</li>
+<li>考虑添加固定顶部功能(sticky header)</li>
+</ul>
+<h2>Footer 组件</h2>
+<h3>Footer 1</h3>
+<ul>
+<li><strong>元素类型</strong>: <code>&lt;script&gt;</code></li>
+<li><strong>文本长度</strong>: 34311 字符</li>
+<li><strong>识别方法</strong>: structure_position</li>
+</ul>
+<h4>组件HTML片段</h4>
+<pre><code class="language-html">&lt;script nonce=&quot;o82KGYaBFB6Z49GEJw2gkg&quot;&gt;(function(){function a(c,d){google.c.e(&quot;load&quot;,c,String(d))};window.google=window.google||{};google.c.iim=google.c.iim||{};var b=Date.now();google.tick(&quot;load&quot;,&quot;prt&quot;,b,&quot;SearchBodyEnd&quot;);a(&quot;imn&quot;,document.getElementsByTagName(&quot;img&quot;).length);a(&quot;dtc&quot;,document.getElementsByTagName(&quot;div&quot;).length);a(&quot;stc&quot;,document.getElementsByTagName(&quot;span&quot;).length);google.c.ub?google.c.ub():google.c.ubf&amp;&amp;google.c.u(&quot;frt&quot;);google.c.cae||google.c.maft(b,null);google.c.miml(b);google.... (已截断)
+</code></pre>
+<h4>功能建议</h4>
+<ul>
+<li>包含版权信息、联系方式和链接</li>
+<li>使用flex布局使内容均匀分布</li>
+</ul>
+                <hr>
+                <footer>
+                    <p><small>由 Web Clone Agent 生成</small></p>
+                </footer>
+            </body>
+            </html>
+            
